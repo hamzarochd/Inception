@@ -20,7 +20,7 @@ if [ ! -f wp-config.php ]; then
     wp core install --url=${URL} --title=${TITLE} --admin_user=${ADMIN} --admin_password=${ADMIN_PASSWORD} --admin_email=${EMAILADMINE} --allow-root
     
     wp user create ${USER} ${USER_EMAIL} --role=${USER_ROLE} --user_pass=${USER_PASSWORD} --allow-root
-    echo "WordPress installed and User created seccessfully."
+    echo "User created seccessfully."
 
 else
     echo "WordPress already installed."
