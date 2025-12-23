@@ -1,0 +1,63 @@
+services:
+  mariadb:
+    image: mariadb:mydb
+    build: 
+      context: requirements/mariadb
+      dockerfile: Dockerfile
+    container_name: mariadb
+    env_file: .env
+    networks:
+     - inception
+    volumes: 
+      - mariadb:/var/lib/mysql
+    restart: always
+
+  wordpress:
+    image: wordpress:mywp
+    build: 
+      context: requirements/wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress
+    env_file: .env
+    networks:
+      - inception
+    volumes: 
+      - wordpress:/var/www/html
+    restart: always
+    depends_on:
+      - mariadb
+
+  nginx:
+    image: nginx:myserver
+    build: 
+      context: requirements/nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    env_file: .env
+    networks:
+      - inception
+    volumes: 
+      - wordpress:/var/www/html
+    restart: always
+    depends_on: 
+      - wordpress
+    ports:
+      - "443:443"
+
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/hrochd/data/wordpress
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/hrochd/data/mariadb
+
+networks:
+  inception:
+    driver: bridge
