@@ -86,3 +86,12 @@ This project explores the following key concepts:
 - [srcs/docker-compose.yml](./srcs/docker-compose.yml): Main service configuration.
 
 ---
+
+## Resources
+
+- [Docker documentation](https://docs.docker.com/)
+- [WordPress documentation](https://wordpress.org/support/)
+- [MariaDB documentation](https://mariadb.org/documentation/)
+- [Nginx documentation](https://nginx.org/en/docs/)
+
+---
