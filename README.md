@@ -1,4 +1,4 @@
-*This project has been created as part of the 1337 curriculum by hamzarochd.*
+*This project has been created as part of the 42 curriculum by hamzarochd.*
 
 # Inception
 
